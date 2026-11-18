@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f5ef">
+  <title>Gestió de seguiment — Farmàcia Martí</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="gestio.css"><link rel="stylesheet" href="gestio-extra.css">
+</head>
+<body class="staff-page">
+  <header class="staff-header"><a class="brand" href="index.html"><span class="brand-mark">M<span>+</span></span><span class="brand-name">FARMÀCIA <b>MARTÍ</b><small>LLEIDA · GESTIÓ INTERNA</small></span></a><a href="index.html">Torna a la web ↗</a></header>
+  <main class="staff-main">
+    <section id="login-panel" class="staff-panel login-panel"><p class="eyebrow">ACCÉS FARMÀCIA</p><h1>Gestió de<br><em>seguiment.</em></h1><p>Accés només per al personal autoritzat. Les dades personals només es carreguen després d’iniciar sessió.</p><form id="login-form"><label for="staff-email">Correu del compte intern</label><input id="staff-email" type="email" autocomplete="username" required><label for="staff-password">Contrasenya</label><input id="staff-password" type="password" autocomplete="current-password" required><button class="button button-dark" type="submit">Inicia sessió <span>↗</span></button><div class="form-error" role="alert" hidden></div></form></section>
+
+    <section id="dashboard" hidden>
+      <div class="dashboard-heading"><div><p class="eyebrow">ESPAI INTERN · DADES RESTRINGIDES</p><h1>Seguiment<br><em>de clients.</em></h1></div><button id="logout-button" class="button button-outline">Tanca sessió <span>↗</span></button></div>
+      <div class="staff-warning"><b>Només seguiment no clínic.</b> No introdueixis diagnòstics, medicació, resultats, fotografies ni notes de salut. Aquest espai només organitza recordatoris i preferències de contacte.</div>
+      <div class="dashboard-grid">
+        <section class="staff-panel followup-panel"><div class="panel-heading"><div><p class="eyebrow">AGENDA</p><h2>Recordatoris pendents</h2></div><span id="pending-count" class="count-badge">0</span></div><div id="followups-list" class="followups-list"><p class="muted">Carregant…</p></div></section>
+        <section class="staff-panel create-panel"><p class="eyebrow">NOU RECORDATORI</p><h2>Afegeix un seguiment</h2><form id="followup-form"><label for="client-select">Client</label><select id="client-select" required></select><label for="action-select">Tipus de recordatori</label><select id="action-select" required><option value="service_followup">Seguiment de servei</option><option value="routine_review">Revisió de rutina</option><option value="appointment_reminder">Recordatori de cita</option><option value="reorder_reminder">Recordatori de reposició</option></select><label for="service-select">Espai</label><select id="service-select" required><option value="pell">Espai Pell</option><option value="familia">Espai Família</option><option value="nutricio">Espai Nutrició</option><option value="mascotes">Espai Mascotes</option></select><label for="due-date">Data prevista</label><input id="due-date" type="date" required><label for="channel-select">Canal autoritzat</label><select id="channel-select" required></select><button class="button button-dark" type="submit">Desa recordatori <span>↗</span></button><p class="form-hint">Aquesta agenda no envia missatges automàtics. Quan arribi la data, el personal pot preparar un correu o SMS i enviar-lo manualment.</p><div class="form-error" role="alert" hidden></div></form></section>
+      </div>
+      <section class="staff-panel clients-panel"><div class="panel-heading"><div><p class="eyebrow">REGISTRE</p><h2>Clients</h2></div><input id="client-search" type="search" placeholder="Cerca per nom o correu" aria-label="Cerca clients"></div><div class="table-wrap"><table><thead><tr><th>Nom</th><th>Contacte</th><th>Espai</th><th>Seguiment autoritzat</th><th>Novetats autoritzades</th><th></th></tr></thead><tbody id="clients-table"><tr><td colspan="6" class="muted">Carregant…</td></tr></tbody></table></div></section>
+      <div class="dashboard-grid request-grid">
+        <section class="staff-panel"><div class="panel-heading"><div><p class="eyebrow">CITES</p><h2>Sol·licituds pendents</h2></div></div><div id="appointments-list" class="request-list"></div></section>
+        <section class="staff-panel"><div class="panel-heading"><div><p class="eyebrow">PARAFARMÀCIA</p><h2>Disponibilitat</h2></div></div><div id="products-list" class="request-list"></div></section>
+        <section class="staff-panel"><div class="panel-heading"><div><p class="eyebrow">PREFERÈNCIES</p><h2>Canvis de contacte pendents</h2></div></div><div id="preferences-list" class="request-list"></div></section>
+      </div>
+      <section class="staff-panel events-admin"><div class="panel-heading"><div><p class="eyebrow">ACTIVITATS</p><h2>Programa tallers i xerrades</h2></div></div><form id="event-admin-form" class="event-admin-form"><label for="admin-event-title">Títol</label><input id="admin-event-title" name="title" maxlength="100" required><label for="admin-event-description">Descripció breu</label><textarea id="admin-event-description" name="description" maxlength="500" required></textarea><label for="admin-event-date">Data i hora</label><input id="admin-event-date" name="startsAt" type="datetime-local" required><label for="admin-event-location">Lloc</label><input id="admin-event-location" name="location" maxlength="160" required><button class="button button-dark" type="submit">Desa l’activitat <span>↗</span></button><p class="form-hint">Les activitats es creen ocultes. Publica-les i obre inscripcions des de la llista només quan les dades siguin correctes.</p><div class="form-error" role="alert" hidden></div></form><div id="events-admin-list" class="events-admin-list"></div></section>
+      <div id="dashboard-message" class="dashboard-message" role="status" hidden></div>
+    </section>
+  </main>
+  <footer class="staff-footer"><span>Farmàcia Martí · Accés intern</span><a href="privacy.html">Avís de privacitat</a></footer>
+  <script src="supabase-config.js"></script><script src="gestio.js"></script>
+</body></html>
